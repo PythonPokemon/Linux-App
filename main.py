@@ -26,7 +26,7 @@ class LinuxLearnApp(App):
         
         for command, description in commands:
             button = Button(text=command, font_size=16)
-            button.bind(on_press=lambda _, cmd=command: self.on_command_click(cmd))
+            button.bind(on_press=lambda _, desc=description: self.on_command_click(desc))
             layout.add_widget(button)
 
         
@@ -35,14 +35,8 @@ class LinuxLearnApp(App):
         
         return layout
     
-    def on_command_click(self, command):
-        if command == "ls":
-            self.output_label.text = "ls: Listet Dateien und Verzeichnisse auf."
-        elif command == "cd":
-            self.output_label.text = "cd: Wechselt das Verzeichnis."
-        # Füge hier weitere Befehle hinzu
-        else:
-            self.output_label.text = "Befehl nicht gefunden."
+    def on_command_click(self, description):
+        self.output_label.text = description
 
 if __name__ == '__main__':
     app = LinuxLearnApp()
